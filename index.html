@@ -11,6 +11,14 @@
 	<![endif]-->
 </head>
 <body>
+		<section id="bad-todo">
+			BAD
+		</section>
+
+		<section id="good-todo">
+				Good
+		</section>
+
 	<section id="todoapp">
 		<header id="header">
 			<h1>todos</h1>
@@ -31,6 +39,8 @@
 		<p>Created by <a href="http://github.com/sindresorhus">Sindre Sorhus</a></p>
 		<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
 	</footer>
+
+
 	<script id="todo-template" type="text/x-handlebars-template">
 	{{#this}}
 	<li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
@@ -43,6 +53,29 @@
 	</li>
 	{{/this}}
 	</script>
+
+	<script id="badtodo-template" type="text/x-handlebars-template">
+	{{#this}}
+	<li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
+		<div class="view">
+			<label>{{title}}</label>
+		</div>
+	</li>
+	{{/this}}
+	</script>
+
+
+	<script id="goodtodo-template" type="text/x-handlebars-template">
+	{{#this}}
+	<li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
+		<div class="view">
+			<label>{{title}}</label>
+		</div>
+	</li>
+	{{/this}}
+	</script>
+
+
 	<script id="footer-template" type="text/x-handlebars-template">
 	<span id="todo-count"><strong>{{activeTodoCount}}</strong> {{activeTodoWord}} left</span>
 	{{#if completedTodos}}<button id="clear-completed">Clear completed ({{completedTodos}})</button>{{/if}}

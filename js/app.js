@@ -18,13 +18,16 @@ jQuery(function( $ ) {
 			}
 		},
 		storegroups: function() {
+			console.log("GROUPING")
 			var data = Utils.store("todos-jquery")
+			return this.makeGroup(data);
+		},
+		makeGroup: function(data) {
 			var groupped = _.groupBy(data, function(val) {
 			  var str= val.title;
 			  var n=str.match(/^[+-]/g);
-			  return n[0]
+			  return n&&n[0]
 			});
-
 			return groupped;
 		}
 	};
@@ -33,18 +36,22 @@ jQuery(function( $ ) {
 		init: function() {
 			this.ENTER_KEY = 13;
 			this.todos = Utils.store('todos-jquery');
+			this.groups = Utils.storegroups();
 			this.cacheElements();
 			this.bindEvents();
 			this.render();
 		},
 		cacheElements: function() {
 			this.todoTemplate = Handlebars.compile( $('#todo-template').html() );
+			this.badTemplate = Handlebars.compile( $('#badtodo-template').html() );
 			this.footerTemplate = Handlebars.compile( $('#footer-template').html() );
 			this.$todoApp = $('#todoapp');
 			this.$newTodo = $('#new-todo');
 			this.$toggleAll = $('#toggle-all');
 			this.$main = $('#main');
 			this.$todoList = $('#todo-list');
+			this.$badTodoList= $('#bad-todo');
+			this.$goodTodoList= $('#good-todo');
 			this.$footer = this.$todoApp.find('#footer');
 			this.$count = $('#todo-count');
 			this.$clearBtn = $('#clear-completed');
@@ -61,9 +68,13 @@ jQuery(function( $ ) {
 			list.on( 'click', '.destroy', this.destroy );
 		},
 		render: function() {
-			this.$todoList.html( this.todoTemplate( this.todos ) );
+			this.groups = Utils.storegroups()
+            this.$todoList.html( this.todoTemplate( this.todos ) );
+			this.$badTodoList.html( this.badTemplate( Utils.makeGroup(this.todos)["-"]) );
+			this.$goodTodoList.html( this.badTemplate( Utils.makeGroup(this.todos)["+"]) );
 			this.$main.toggle( !!this.todos.length );
 			this.$toggleAll.prop( 'checked', !this.activeTodoCount() );
+
 			this.renderFooter();
 			Utils.store( 'todos-jquery', this.todos );
 		},
