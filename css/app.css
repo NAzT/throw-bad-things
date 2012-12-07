@@ -7,11 +7,20 @@
 ul#bad-todo {
 	float: left;
 	width: 300px;
+	border-top: 11px solid #6C615C;
+	background: white;
+	padding: 20px;
+	margin-right: 30px;
+	border-radius: 12px;
 }
 
 ul#good-todo {
 	float: left;
 	width: 300px;
+	border-top: 11px solid #6C615C;
+	background: white;
+	padding: 20px;
+	border-radius: 12px;
 }
 
 ul li {

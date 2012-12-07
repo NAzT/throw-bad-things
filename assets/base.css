@@ -25,7 +25,7 @@ body {
 	line-height: 1.4em;
 	background: #eaeaea url('bg.png');
 	color: #4d4d4d;
-	width: 550px;
+	width: 960px;
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
@@ -35,6 +35,7 @@ body {
 }
 
 #todoapp {
+	width: 700px;
 	background: #fff;
 	background: rgba(255, 255, 255, 0.9);
 	margin: 130px 0 40px 0;
@@ -83,12 +84,13 @@ body {
 	text-rendering: optimizeLegibility;
 }
 
-#header {
+.header, #header {
+
 	padding-top: 15px;
 	border-radius: inherit;
 }
 
-#header:before {
+.header:before, #header:before{
 	content: '';
 	position: absolute;
 	top: 0;
