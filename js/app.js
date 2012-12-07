@@ -25,14 +25,11 @@ jQuery(function( $ ) {
 		makeGroup: function(data) {
 			var myString = data.title;
 			var myRegexp = /^([+-])(.*)+/g;
+
 			_.each(data, function(val, k) {
 				console.log(val, k)
 			})
 
-			// data = _.collect(data, function (val) {
-
-
-			// })
 			var groupped = _.groupBy(data, function(val, k) {
 			  var match = myRegexp.exec(val.title);
 				// console.log(match)
@@ -91,6 +88,7 @@ jQuery(function( $ ) {
 			this.$toggleAll.prop( 'checked', !this.activeTodoCount() );
 
 			// this.renderFooter();
+			console.log(goodTodos)
 			Utils.store( 'todos-jquery', this.todos );
 		},
 		renderFooter: function() {

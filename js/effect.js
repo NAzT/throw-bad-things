@@ -37,6 +37,10 @@ $(document).ready(function() {
       $(this).attr('disabled', 'disabled');
       isClicked = true;
 
+      var store = Utils.store("todos-jquery")
+      var goodTodos = Utils.makeGroup(store)["+"]
+      Utils.store("todos-jquery", goodTodos)
+
       var newBall = function() {
          var el = $('<img id="bad-ball" src="/img/waste.png" />');
          balls.push(el);
@@ -88,6 +92,7 @@ $(document).ready(function() {
                            trash.animate({
                               'top': trash.offset().top + 172,
                            }, function() {
+                              window.location.reload();
                               trash.hide();
                               isClicked = false;
                            });
