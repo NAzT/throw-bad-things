@@ -83,7 +83,7 @@ jQuery(function( $ ) {
 			this.$main.toggle( !!this.todos.length );
 			this.$toggleAll.prop( 'checked', !this.activeTodoCount() );
 
-			this.renderFooter();
+			// this.renderFooter();
 			Utils.store( 'todos-jquery', this.todos );
 		},
 		renderFooter: function() {
