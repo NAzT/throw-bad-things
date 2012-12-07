@@ -25,6 +25,10 @@ jQuery(function( $ ) {
 		makeGroup: function(data) {
 			var myString = data.title;
 			var myRegexp = /^([+-])(.*)+/g;
+			_.each(data, function(val, k) {
+				console.log(val, k)
+			})
+
 			// data = _.collect(data, function (val) {
 
 
@@ -78,8 +82,11 @@ jQuery(function( $ ) {
 		render: function() {
 			this.groups = Utils.storegroups()
             // this.$todoList.html( this.todoTemplate( this.todos ) );
-			this.$badTodoList.html( this.badTemplate( Utils.makeGroup(this.todos)["-"]) );
-			this.$goodTodoList.html( this.badTemplate( Utils.makeGroup(this.todos)["+"]) );
+            var badTodos = Utils.makeGroup(this.todos)["-"]
+            var goodTodos = Utils.makeGroup(this.todos)["+"]
+			this.$badTodoList.html( this.badTemplate(badTodos) );
+
+			this.$goodTodoList.html( this.badTemplate(goodTodos) );
 			this.$main.toggle( !!this.todos.length );
 			this.$toggleAll.prop( 'checked', !this.activeTodoCount() );
 
