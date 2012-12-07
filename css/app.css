@@ -4,10 +4,25 @@
 }
 
 
-section#bad-todo {
+ul#bad-todo {
 	float: left;
+	width: 300px;
 }
+
+ul#good-todo {
+	float: left;
+	width: 300px;
+}
+
+ul li {
+	list-style: none;
+}
+
 
 .clear {
 	clear: both;
+}
+
+.wrapper {
+	width: 800px;
 }
