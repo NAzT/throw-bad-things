@@ -2,3 +2,12 @@
 #footer {
 	display: none;
 }
+
+
+section#bad-todo {
+	float: left;
+}
+
+.clear {
+	clear: both;
+}
