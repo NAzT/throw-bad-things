@@ -23,7 +23,15 @@ jQuery(function( $ ) {
 			return this.makeGroup(data);
 		},
 		makeGroup: function(data) {
-			var groupped = _.groupBy(data, function(val) {
+			var myString = data.title;
+			var myRegexp = /^([+-])(.*)+/g;
+			// data = _.collect(data, function (val) {
+
+
+			// })
+			var groupped = _.groupBy(data, function(val, k) {
+			  var match = myRegexp.exec(val.title);
+				// console.log(match)
 			  var str= val.title;
 			  var n=str.match(/^[+-]/g);
 			  return n&&n[0]
@@ -69,7 +77,7 @@ jQuery(function( $ ) {
 		},
 		render: function() {
 			this.groups = Utils.storegroups()
-            this.$todoList.html( this.todoTemplate( this.todos ) );
+            // this.$todoList.html( this.todoTemplate( this.todos ) );
 			this.$badTodoList.html( this.badTemplate( Utils.makeGroup(this.todos)["-"]) );
 			this.$goodTodoList.html( this.badTemplate( Utils.makeGroup(this.todos)["+"]) );
 			this.$main.toggle( !!this.todos.length );
